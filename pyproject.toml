@@ -1,12 +1,22 @@
 [project]
-name = "python-template"
+name = "catpin"
 version = "0.1.0"
-description = "A Python project template"
+description = "Analyse a Pinboard archive and tag fresh pins with help from Claude"
 requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "typer>=0.12",
+]
+
+[project.scripts]
+catpin = "catpin.cli:app"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["catpin"]
 
 [dependency-groups]
 dev = [
@@ -36,16 +46,20 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "SIM", "C4", "DTZ", "T20", "PTH", "ERA", "PL", "TRY", "RUF"]
 
+[tool.ruff.lint.per-file-ignores]
+# Expected values in assertions read better as literals than as constants.
+"tests/*" = ["PLR2004"]
+
 [tool.ruff.format]
 
 [tool.ty]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--cov=src --cov-report=term-missing"
+addopts = "--cov=catpin --cov-report=term-missing"
 
 [tool.coverage.run]
-source = ["src"]
+source = ["catpin"]
 
 [tool.coverage.report]
 show_missing = true
@@ -54,7 +68,7 @@ show_missing = true
 exclude_dirs = ["tests"]
 
 [tool.vulture]
-paths = ["src"]
+paths = ["catpin"]
 
 [tool.deptry]
 
@@ -100,7 +114,7 @@ cmd = "pytest -q --tb=short"
 help = "Run tests"
 
 [tool.poe.tasks.security]
-cmd = "bandit -r src -q"
+cmd = "bandit -r catpin -q"
 help = "Security scan (bandit)"
 
 [tool.poe.tasks.vulns]
@@ -117,7 +131,7 @@ cmd = "biston scan ."
 help = "Clone detection (biston)"
 
 [tool.poe.tasks.dead-code]
-cmd = "vulture src"
+cmd = "vulture catpin"
 help = "Dead code detection"
 
 [tool.poe.tasks.unused-deps]
@@ -128,7 +142,7 @@ help = "Unused dependency check"
 shell = """
   ruff check . &
   ty check &
-  bandit -r src -q &
+  bandit -r catpin -q &
   zorilla check . &
   biston scan . &
   (uvx pysentry-rs . || true) &
