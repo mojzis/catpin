@@ -4,14 +4,19 @@ from __future__ import annotations
 
 import time
 from datetime import UTC, datetime
+from pathlib import Path
+from typing import Annotated
 
 import typer
 
 from . import config
 from .analysis import Stats, toread_backlog
 from .client import ALL_INTERVAL_S, PinboardClient, token_username
+from .renames import Rename, plan_renames
 from .report import merge_curated, render, stats_payload
 from .state import load_state, read_json, save_state, write_json
+
+RENAMES_JSON = Path("renames.json")
 
 app = typer.Typer(
     add_completion=False,
@@ -30,9 +35,10 @@ def _archive_is_fresh(force: bool) -> float:
 
 @app.command()
 def archive(
-    force: bool = typer.Option(
-        False, "--force", help="Ignore the five-minute posts/all cooldown."
-    ),
+    force: Annotated[
+        bool,
+        typer.Option("--force", help="Ignore the five-minute posts/all cooldown."),
+    ] = False,
 ) -> None:
     """Fetch the whole archive and the tag list into data/ (Phase 1)."""
     if config.PINS_RAW.exists() and not force:
@@ -81,3 +87,58 @@ def analyse() -> None:
 
 if __name__ == "__main__":
     app()
+
+
+def _rename_line(item: Rename, note: str = "") -> str:
+    """One terse line describing a single rename."""
+    arrow = f"{item.old} -> {item.new}"
+    counts = (
+        f"{item.old_uses}+{item.new_uses}={item.result_uses}"
+        if item.merges
+        else f"{item.old_uses}"
+    )
+    return f"  {arrow:38s} {counts:14s} {item.group:10s} {note}".rstrip()
+
+
+@app.command()
+def rename(
+    group: Annotated[
+        list[str] | None,
+        typer.Option("--group", "-g", help="Only these groups from renames.json."),
+    ] = None,
+    yes: Annotated[
+        bool, typer.Option("--yes", help="Actually rename. Default is a dry run.")
+    ] = False,
+) -> None:
+    """Merge duplicate tags via tags/rename. Dry run unless --yes."""
+    plan = read_json(RENAMES_JSON)
+    counts = read_json(config.TAGS_RAW)
+    items = plan_renames(plan, counts, list(group) if group else None)
+
+    live = [i for i in items if i.exists]
+    absent = [i for i in items if not i.exists]
+
+    for item in live:
+        typer.echo(_rename_line(item, "merge" if item.merges else ""))
+    for item in absent:
+        typer.echo(_rename_line(item, "SKIP: not in tags/get"))
+
+    typer.echo(f"{len(live)} to apply, {len(absent)} skipped")
+    if not yes:
+        typer.echo("dry run; pass --yes to apply")
+        raise typer.Exit(0)
+
+    with PinboardClient() as client:
+        for item in live:
+            client.tags_rename(item.old, item.new)
+            typer.echo(f"  done {item.old} -> {item.new}")
+        after = client.tags_get()
+
+    write_json(config.TAGS_RAW, after)
+    stuck = [i.old for i in live if i.old in after]
+    typer.echo(f"{len(live) - len(stuck)}/{len(live)} took effect")
+    if stuck:
+        typer.echo(f"still present after rename: {', '.join(stuck)}")
+    save_state(
+        config.STATE_JSON, renamed_at=datetime.now(UTC).isoformat(timespec="seconds")
+    )

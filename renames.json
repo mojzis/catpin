@@ -1,0 +1,50 @@
+{
+  "_comment": "Tag merges for 'pins.py rename'. Each group can be applied on its own. Nothing runs without --yes.",
+  "safe": {
+    "Security": "security",
+    "Linux": "linux",
+    "Dwh": "dwh",
+    "Cms": "cms",
+    "API": "api",
+    "Ansible": "ansible",
+    "Twitter": "twitter",
+    "charts": "chart",
+    "games": "game",
+    "presentations": "presentation",
+    "birds": "bird",
+    "teams": "team",
+    "agents": "agent",
+    "vectors": "vector",
+    "skills": "skill",
+    "Recommendation": "recommendations",
+    "corse": "course",
+    "tools": "tool"
+  },
+  "separator": {
+    "open-source": "opensource",
+    "machine_learning": "ml",
+    "js": "javascript",
+    "note-taking": "notes"
+  },
+  "semantic": {
+    "travel": "trip",
+    "dataviz": "visualization",
+    "slides": "presentation",
+    "test": "testing",
+    "ops": "devops",
+    "container": "docker",
+    "pi": "raspberrypi",
+    "assisted": "vibe",
+    "agentic": "agent"
+  },
+  "language": {
+    "klima": "climate",
+    "gympl": "school",
+    "cestykrajem": "trip"
+  },
+  "clarity": {
+    "lily": "lilypond",
+    "vault": "datavault",
+    "stars": "astronomy"
+  }
+}

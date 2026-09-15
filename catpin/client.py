@@ -116,6 +116,13 @@ class PinboardClient:
 
     # -- write endpoints --------------------------------------------------
 
+    def tags_rename(self, old: str, new: str) -> None:
+        """Rename a tag, merging into ``new`` when that tag already exists."""
+        payload = self._get("tags/rename", old=old, new=new)
+        result = str(payload.get("result", ""))
+        if result != "done":
+            raise ApiResultError("tags/rename", result or "unknown error")
+
     def posts_add(self, fields: dict[str, str]) -> None:
         """Create or replace a pin. Callers must pass every field to keep."""
         payload = self._get("posts/add", **fields)
