@@ -16,4 +16,4 @@ htmlcov/
 .ruff_cache/
 .mypy_cache/
 data/*.json
-data/*.md
+# data/analysis.md is tracked: it carries the tag decisions.
