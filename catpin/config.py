@@ -7,6 +7,7 @@ from pathlib import Path
 DATA_DIR = Path("data")
 
 PINS_RAW = DATA_DIR / "pins_raw.json"
+PINS_CLEAN = DATA_DIR / "pins_clean.json"
 TAGS_RAW = DATA_DIR / "tags_raw.json"
 ANALYSIS_MD = DATA_DIR / "analysis.md"
 STATS_JSON = DATA_DIR / "stats.json"

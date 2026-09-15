@@ -12,7 +12,7 @@ Generated 2026-09-15 from `data/pins_raw.json`.
 | months spanned | 111 |
 | months with at least one pin | 111 |
 | mean pins / active month | 19.2 |
-| distinct tags | 532 |
+| distinct tags | 498 |
 | distinct domains | 1298 |
 
 Busiest months: 2020-12 (123), 2020-11 (90), 2021-01 (60), 2025-06 (50), 2025-05 (41).
@@ -41,100 +41,73 @@ No gap of two consecutive empty months.
 | group | pins | share |
 |---|---|---|
 | untagged | 600 | 28.2% |
-| exactly one tag | 1091 | 51.3% |
+| exactly one tag | 1094 | 51.5% |
 | only workflow tags (no subject) | 0 | 0.0% |
-| two or more tags | 435 | 20.5% |
+| two or more tags | 432 | 20.3% |
 
 ## Tag frequency
 
 | metric | value |
 |---|---|
-| distinct tags | 532 |
-| total tag uses | 2024 |
-| share of uses held by the top 40 | 51.2% |
-| tags used exactly once | 300 (56.4%) |
-| tags used exactly twice | 78 (14.7%) |
-| tags used 5 or more times | 85 |
+| distinct tags | 498 |
+| total tag uses | 2019 |
+| share of uses held by the top 40 | 53.5% |
+| tags used exactly once | 283 (56.8%) |
+| tags used exactly twice | 67 (13.5%) |
+| tags used 5 or more times | 87 |
 
 ### Head: top 40 tags
 
 | # | tag | pins | share of all pins |
 |---|---|---|---|
 | 1 | data | 121 | 5.7% |
-| 2 | python | 84 | 4.0% |
-| 3 | trip | 73 | 3.4% |
+| 2 | trip | 85 | 4.0% |
+| 3 | python | 84 | 4.0% |
 | 4 | kids | 71 | 3.3% |
 | 5 | book | 69 | 3.2% |
 | 6 | ai | 44 | 2.1% |
-| 7 | physics | 42 | 2.0% |
-| 8 | visualization | 39 | 1.8% |
+| 7 | visualization | 42 | 2.0% |
+| 8 | physics | 42 | 2.0% |
 | 9 | performance | 39 | 1.8% |
-| 10 | job | 34 | 1.6% |
-| 11 | pandas | 26 | 1.2% |
-| 12 | llm | 24 | 1.1% |
-| 13 | school | 22 | 1.0% |
-| 14 | security | 21 | 1.0% |
-| 15 | ml | 20 | 0.9% |
-| 16 | tools | 20 | 0.9% |
+| 10 | tool | 36 | 1.7% |
+| 11 | job | 34 | 1.6% |
+| 12 | pandas | 26 | 1.2% |
+| 13 | llm | 24 | 1.1% |
+| 14 | school | 24 | 1.1% |
+| 15 | ml | 23 | 1.1% |
+| 16 | security | 22 | 1.0% |
 | 17 | postgres | 20 | 0.9% |
 | 18 | music | 18 | 0.8% |
-| 19 | tool | 16 | 0.8% |
-| 20 | css | 14 | 0.7% |
-| 21 | nature | 14 | 0.7% |
-| 22 | climate | 14 | 0.7% |
-| 23 | health | 13 | 0.6% |
-| 24 | chart | 13 | 0.6% |
+| 19 | climate | 16 | 0.8% |
+| 20 | chart | 15 | 0.7% |
+| 21 | css | 14 | 0.7% |
+| 22 | nature | 14 | 0.7% |
+| 23 | testing | 13 | 0.6% |
+| 24 | health | 13 | 0.6% |
 | 25 | jupyter | 13 | 0.6% |
 | 26 | mcp | 11 | 0.5% |
-| 27 | testing | 11 | 0.5% |
-| 28 | stars | 11 | 0.5% |
+| 27 | stars | 11 | 0.5% |
+| 28 | game | 11 | 0.5% |
 | 29 | map | 11 | 0.5% |
 | 30 | programming | 11 | 0.5% |
 | 31 | solar | 11 | 0.5% |
-| 32 | gdpr | 11 | 0.5% |
-| 33 | learning | 10 | 0.5% |
-| 34 | duckdb | 10 | 0.5% |
-| 35 | math | 10 | 0.5% |
-| 36 | bike | 10 | 0.5% |
-| 37 | graph | 9 | 0.4% |
-| 38 | metadata | 9 | 0.4% |
-| 39 | linux | 9 | 0.4% |
-| 40 | song | 9 | 0.4% |
+| 32 | opensource | 11 | 0.5% |
+| 33 | gdpr | 11 | 0.5% |
+| 34 | learning | 10 | 0.5% |
+| 35 | duckdb | 10 | 0.5% |
+| 36 | presentation | 10 | 0.5% |
+| 37 | math | 10 | 0.5% |
+| 38 | vibe | 10 | 0.5% |
+| 39 | linux | 10 | 0.5% |
+| 40 | bike | 10 | 0.5% |
 
 ### Long tail
 
-300 tags are used once. First 60 alphabetically: `API`, `Ansible`, `Cms`, `Dwh`, `Ford`, `Lenovo`, `Linux`, `Nvidia`, `OCR`, `OS`, `Productivity`, `Recommendation`, `SMACK`, `Security`, `Ubuntu`, `ab`, `agents`, `aggregations`, `akvarium`, `animals`, `ansible`, `anthropic`, `api`, `arrow`, `basecamp`, `basne`, `battleship`, `beach`, `bigdata`, `blender`, `blob`, `brain`, `brainstorm`, `broukbot`, `brucewillis`, `camp`, `cc`, `cdc`, `chat`, `chch`, `chef`, `china`, `chords`, `ci`, `clustering`, `co2`, `coc`, `codegen`, `commerce`, `concussion`, `conservation`, `constellations`, `coop`, `copilot`, `copter`, `corse`, `covid`, `coworking`, `creativity`, `csat`.
+283 tags are used once. First 60 alphabetically: `Ford`, `Lenovo`, `Nvidia`, `OCR`, `OS`, `Productivity`, `SMACK`, `Ubuntu`, `ab`, `aggregations`, `akvarium`, `animals`, `anthropic`, `arrow`, `basecamp`, `basne`, `battleship`, `beach`, `bigdata`, `blender`, `blob`, `brain`, `brainstorm`, `broukbot`, `brucewillis`, `camp`, `cc`, `cdc`, `chat`, `chch`, `chef`, `china`, `chords`, `ci`, `clustering`, `co2`, `coc`, `codegen`, `commerce`, `concussion`, `conservation`, `constellations`, `coop`, `copilot`, `copter`, `covid`, `coworking`, `creativity`, `csat`, `curl`, `cycling`, `d3`, `dagster`, `dask`, `databricks`, `datalake`, `dataquality`, `datastory`, `datawarehouse`, `debugging`.
 
 ## Near-duplicate tags
 
-Tags that collapse to the same key once case, separators and plurals are folded.
-
-| kind | variants (uses) | combined |
-|---|---|---|
-| plural | `tools` (20), `tool` (16) | 36 |
-| case | `security` (21), `Security` (1) | 22 |
-| plural | `chart` (13), `charts` (2) | 15 |
-| plural | `game` (7), `games` (4) | 11 |
-| case | `linux` (9), `Linux` (1) | 10 |
-| plural | `presentation` (7), `presentations` (2) | 9 |
-| plural | `bird` (6), `birds` (2) | 8 |
-| plural | `team` (6), `teams` (1) | 7 |
-| case | `dwh` (3), `Dwh` (1) | 4 |
-| case | `cms` (3), `Cms` (1) | 4 |
-| plural | `agent` (2), `agents` (1) | 3 |
-| plural | `vector` (2), `vectors` (1) | 3 |
-| plural | `skill` (1), `skills` (1) | 2 |
-| case | `api` (1), `API` (1) | 2 |
-| plural | `recommendations` (1), `Recommendation` (1) | 2 |
-| case | `ansible` (1), `Ansible` (1) | 2 |
-
-### Suspected typos
-
-A rare tag one character away from a much more common one.
-
-| suspect | uses | likely meant | uses |
-|---|---|---|---|
-| `corse` | 1 | `course` | 4 |
+No case / separator / plural collisions found.
 
 ## Tag co-occurrence
 
@@ -142,42 +115,42 @@ For each frequent tag, the tags it shares pins with most often (Jaccard similari
 
 | tag | travels with (shared pins / jaccard) |
 |---|---|
-| `data` | `visualization` 9/0.06, `python` 10/0.051, `ai` 5/0.031, `reporting` 3/0.024, `tools` 3/0.022 |
-| `python` | `testing` 6/0.067, `data` 10/0.051, `jupyter` 3/0.032, `ml` 3/0.03, `performance` 3/0.025 |
-| `trip` | `nature` 4/0.048 |
-| `kids` | `school` 6/0.069, `programming` 4/0.051, `history` 3/0.042, `games` 3/0.042, `movies` 3/0.041 |
+| `data` | `visualization` 10/0.065, `python` 10/0.051, `ai` 5/0.031, `reporting` 3/0.024, `pandas` 3/0.021 |
+| `trip` | `nature` 4/0.042, `bird` 3/0.033 |
+| `python` | `testing` 6/0.066, `data` 10/0.051, `jupyter` 3/0.032, `ml` 3/0.029, `performance` 3/0.025 |
+| `kids` | `school` 6/0.067, `game` 4/0.051, `programming` 4/0.051, `history` 3/0.042, `movies` 3/0.041 |
 | `book` | `reading` 3/0.042, `kids` 4/0.029 |
-| `ai` | `data` 5/0.031 |
+| `ai` | `ml` 3/0.047, `data` 5/0.031 |
+| `visualization` | `chart` 7/0.14, `map` 5/0.104, `data` 10/0.065 |
 | `physics` | `kids` 4/0.037 |
-| `visualization` | `chart` 6/0.13, `map` 5/0.111, `data` 9/0.06 |
-| `performance` | `javascript` 3/0.075, `postgres` 4/0.073, `python` 3/0.025 |
+| `performance` | `javascript` 4/0.095, `postgres` 4/0.073, `python` 3/0.025 |
+| `tool` | `image` 3/0.075, `data` 3/0.019 |
 | `pandas` | `data` 3/0.021 |
 | `llm` | `eval` 3/0.12 |
-| `school` | `kids` 6/0.069 |
-| `ml` | `python` 3/0.03 |
-| `tools` | `data` 3/0.022 |
+| `school` | `kids` 6/0.067 |
+| `ml` | `ai` 3/0.047, `python` 3/0.029 |
 | `postgres` | `performance` 4/0.073 |
-| `css` | `flex` 3/0.214 |
+| `chart` | `visualization` 7/0.14 |
 
 ### Tightest pairs
 
 | pair | shared pins | jaccard |
 |---|---|---|
-| `electricity` + `game` | 3 | 0.30 |
+| `electricity` + `game` | 3 | 0.21 |
 | `css` + `flex` | 3 | 0.21 |
-| `chart` + `visualization` | 6 | 0.13 |
+| `chart` + `visualization` | 7 | 0.14 |
 | `eval` + `llm` | 3 | 0.12 |
-| `map` + `visualization` | 5 | 0.11 |
-| `javascript` + `performance` | 3 | 0.07 |
+| `map` + `visualization` | 5 | 0.10 |
+| `javascript` + `performance` | 4 | 0.10 |
+| `image` + `tool` | 3 | 0.07 |
 | `performance` + `postgres` | 4 | 0.07 |
 | `kids` + `school` | 6 | 0.07 |
 | `python` + `testing` | 6 | 0.07 |
-| `data` + `visualization` | 9 | 0.06 |
+| `data` + `visualization` | 10 | 0.07 |
+| `game` + `kids` | 4 | 0.05 |
 | `data` + `python` | 10 | 0.05 |
 | `kids` + `programming` | 4 | 0.05 |
-| `nature` + `trip` | 4 | 0.05 |
-| `book` + `reading` | 3 | 0.04 |
-| `history` + `kids` | 3 | 0.04 |
+| `ai` + `ml` | 3 | 0.05 |
 
 ## Top domains
 
@@ -228,12 +201,12 @@ For each frequent tag, the tags it shares pins with most often (Jaccard similari
 
 | year | pins | mean tags / pin | untagged | single tag |
 |---|---|---|---|---|
-| 2017 | 108 | 0.98 | 30.6% | 45.4% |
+| 2017 | 108 | 0.97 | 30.6% | 46.3% |
 | 2018 | 181 | 1.20 | 14.4% | 58.0% |
 | 2019 | 171 | 1.09 | 17.0% | 59.1% |
-| 2020 | 377 | 1.29 | 6.9% | 61.8% |
-| 2021 | 262 | 1.12 | 16.0% | 59.5% |
-| 2022 | 87 | 1.20 | 17.2% | 51.7% |
+| 2020 | 377 | 1.29 | 6.9% | 62.3% |
+| 2021 | 262 | 1.11 | 16.0% | 59.5% |
+| 2022 | 87 | 1.18 | 17.2% | 51.7% |
 | 2023 | 275 | 0.95 | 22.9% | 61.8% |
 | 2024 | 226 | 0.38 | 67.3% | 28.3% |
 | 2025 | 296 | 0.87 | 31.4% | 51.0% |
@@ -243,25 +216,7 @@ For each frequent tag, the tags it shares pins with most often (Jaccard similari
 
 Derived by rule, not judgement - every pair here is a spelling of the same idea. Nothing has been renamed; `tags/rename` runs only after you approve.
 
-| fold this | uses | into | uses |
-|---|---|---|---|
-| `tool` | 16 | `tools` | 20 |
-| `Security` | 1 | `security` | 21 |
-| `charts` | 2 | `chart` | 13 |
-| `games` | 4 | `game` | 7 |
-| `Linux` | 1 | `linux` | 9 |
-| `presentations` | 2 | `presentation` | 7 |
-| `birds` | 2 | `bird` | 6 |
-| `teams` | 1 | `team` | 6 |
-| `Dwh` | 1 | `dwh` | 3 |
-| `Cms` | 1 | `cms` | 3 |
-| `agents` | 1 | `agent` | 2 |
-| `vectors` | 1 | `vector` | 2 |
-| `skills` | 1 | `skill` | 1 |
-| `API` | 1 | `api` | 1 |
-| `Recommendation` | 1 | `recommendations` | 1 |
-| `Ansible` | 1 | `ansible` | 1 |
-| `corse` | 1 | `course` | 4 |
+None.
 
 <!-- CURATED: hand-written below this line; analyse preserves it -->
 
@@ -388,69 +343,64 @@ proper nouns (places, projects, one-off tools) that are doing their job.
 
 ## 4. Merge proposals - "fold X into Y"
 
-Nothing below has been applied. Renames go through `tags/rename`, one call
-each, after you say which lines to take.
+Applied **locally only**, to `data/pins_clean.json`, by `pins.py clean`. The raw
+cache is untouched and Pinboard has not been written to. `pins.py clean --revert`
+undoes it. Sending the plan to Pinboard is a separate, deliberate step
+(`pins.py rename --yes`).
 
-### 4a. Safe: case, plural and one typo (18)
+Result: **532 -> 498 tags, 94 pin edits, 5 duplicate tags collapsed.**
+After it, the near-duplicate detector finds nothing left.
 
-| fold | uses | into | uses | result |
-|---|---|---|---|---|
-| `Security` | 1 | `security` | 21 | 22 |
-| `Linux` | 1 | `linux` | 9 | 10 |
-| `Dwh` | 1 | `dwh` | 3 | 4 |
-| `Cms` | 1 | `cms` | 3 | 4 |
-| `API` | 1 | `api` | 1 | 2 |
-| `Ansible` | 1 | `ansible` | 1 | 2 |
-| `Twitter` | 2 | `twitter` | 0 | 2 |
-| `charts` | 2 | `chart` | 13 | 15 |
-| `games` | 4 | `game` | 7 | 11 |
-| `presentations` | 2 | `presentation` | 7 | 9 |
-| `birds` | 2 | `bird` | 6 | 8 |
-| `teams` | 1 | `team` | 6 | 7 |
-| `agents` | 1 | `agent` | 2 | 3 |
-| `vectors` | 1 | `vector` | 2 | 3 |
-| `skills` | 1 | `skill` | 1 | 2 |
-| `Recommendation` | 1 | `recommendations` | 1 | 2 |
-| `corse` | 1 | `course` | 4 | 5 |
-| `tools` | 20 | `tool` | 16 | 36 |
+### 4a. `case` - local only (8)
 
-The last line goes *against* the counts, to keep the type facet singular like
-`book` and `song`. Say the word and I will flip it to `tools`.
+`Security`, `Linux`, `API`, `Cms`, `Dwh`, `Ansible`, `Twitter`, `Recommendation`.
 
-### 4b. Separator and spelling the rule-based pass missed (4)
+**Pinboard already folds these itself.** `tags/get` reports `security: 22`,
+which is 21 `security` + 1 `Security` counted as one tag; the same holds for all
+six lowercase/uppercase pairs. So for searching and browsing on Pinboard, case
+never mattered. It matters only here, because `posts/all` returns the *stored*
+per-pin case and local analysis would otherwise count two tags where Pinboard
+sees one. `pins.py rename` skips this group automatically - there is nothing on
+the Pinboard side to rename.
 
-| fold | uses | into | uses | result |
-|---|---|---|---|---|
-| `open-source` | 3 | `opensource` | 8 | 11 |
-| `machine_learning` | 3 | `ml` | 20 | 23 |
-| `js` | 3 | `javascript` | 4 | 7 |
-| `note-taking` | 2 | `notes` | 2 | 4 |
+### 4b. `safe` - plural and typo (11)
 
-### 4c. Same idea, different word - my judgement, your call (9)
+`charts`->`chart`, `games`->`game`, `presentations`->`presentation`,
+`birds`->`bird`, `teams`->`team`, `agents`->`agent`, `vectors`->`vector`,
+`skills`->`skill`, `corse`->`course`, `tools`->`tool`, `nodes`->`notes`.
 
-| fold | uses | into | uses | result | why |
-|---|---|---|---|---|---|
-| `travel` | 9 | `trip` | 73 | 82 | same pins in kind |
-| `dataviz` | 5 | `visualization` | 39 | 44 | |
-| `slides` | 2 | `presentation` | 7 | 9 | |
-| `test` | 2 | `testing` | 11 | 13 | |
-| `ops` | 2 | `devops` | 2 | 4 | |
-| `container` | 2 | `docker` | 8 | 10 | every pin is Docker |
-| `pi` | 3 | `raspberrypi` | 4 | 7 | |
-| `assisted` | 4 | `vibe` | 6 | 10 | both are AI-assisted coding |
-| `agentic` | 2 | `agent` | 2 | 4 | |
+`nodes`->`notes` was **invisible before the cleanup**: folding `note-taking`
+into `notes` lifted `notes` from 2 uses to 4, which pushed the pair over the
+"rare next to common" threshold. Re-running the analysis after cleaning is what
+surfaced it. A second pass found nothing further, so the plan has converged.
 
-### 4d. Czech into English (3 sure, 2 to decide)
+`tools`->`tool` goes against the counts (20 vs 16), to keep the type facet
+singular like `book` and `song`.
 
-| fold | uses | into | uses | confidence |
-|---|---|---|---|---|
-| `klima` | 2 | `climate` | 14 | sure |
-| `gympl` | 2 | `school` | 22 | sure |
-| `cestykrajem` | 3 | `trip` | 73 | sure |
-| `sucho` | 3 | `climate` | 14 | **decide** - drought is narrower than climate |
-| `kroužky` | 2 | `kids` or `school` | | **decide** - which one? |
+### 4c. `separator` (4)
 
-### 4e. Do NOT merge - traps I checked
+`open-source`->`opensource`, `machine_learning`->`ml`, `js`->`javascript`,
+`note-taking`->`notes`.
+
+### 4d. `semantic` - judgement (9)
+
+`travel`->`trip`, `dataviz`->`visualization`, `slides`->`presentation`,
+`test`->`testing`, `ops`->`devops`, `container`->`docker`, `pi`->`raspberrypi`,
+`assisted`->`vibe`, `agentic`->`agent`.
+
+### 4e. `language` - Czech into English (3)
+
+`klima`->`climate`, `gympl`->`school`, `cestykrajem`->`trip`.
+
+`sucho` (drought, 3) is deliberately **not** folded into `climate` - it is
+narrower, and folding loses that. `kroužky` (2) is undecided: `kids` or `school`.
+
+### 4f. `clarity` - renames, not merges - NOT in the default set
+
+`lily`->`lilypond`, `vault`->`datavault`, `stars`->`astronomy`. Held back;
+run with `-g clarity` to include them.
+
+### 4g. Do NOT merge - traps checked against the pins
 
 | tag | uses | looks like | actually is |
 |---|---|---|---|
@@ -463,19 +413,40 @@ The last line goes *against* the counts, to keep the type facet singular like
 | `stars` | 11 | GitHub stars | astronomy |
 | `svata` | 4 | a place | Svatopluk Karásek, musician |
 
-### 4f. Renames for clarity, not merges - optional (3)
+## 5. Area of life - the second split
 
-`lily` -> `lilypond`, `vault` -> `datavault`, `stars` -> `astronomy`.
-Each is one `tags/rename` call and makes the trap above go away permanently.
+Seeding work / family / hunt from existing tags and running it over all 2126:
 
-## 5. What I need from you
+| | pins | share |
+|---|---|---|
+| work | 683 | 32% |
+| family | 416 | 20% |
+| hunt | 64 | 3% |
+| tagged, no area signal | 317 | 15% |
+| ambiguous (tie) | 46 | 2.2% |
+| untagged | 600 | 28% |
 
-1. Take 4a and 4b wholesale? (22 renames, all mechanical)
-2. Which lines of 4c do you want?
-3. `sucho` and `kroužky` in 4d - fold where?
-4. `tool` or `tools` as the canonical type tag?
-5. The optional renames in 4f - yes or no?
-6. For Phase 2: should the tagging tool ever propose a **type** tag and an
-   **aspect** tag, or stick to topic only? Type is your weakest facet, so
-   proposing one per pin is the highest-value habit change available - but it
-   is a change, so it is yours to choose.
+**2.2% ambiguous**, and 19 of those 46 ties are caused by tags that are not area
+tags at all - `book` (6), `image` (4), `raspberrypi` (2), `music`, `design`,
+`video`. Excluding those, true ambiguity is about 1.8%. Area is a learnable
+signal.
+
+Two findings that cut against first guesses:
+
+1. **`hunt` is only 3%** of tagged pins, far below intuition. Either the seeds
+   are weak, or hunt pins are precisely the ones that never got tagged. The
+   backfill will separate these.
+2. **The untagged 600 are not a hidden category.** Their domains mirror the
+   archive as a whole (github.com 66, theguardian.com 30 - the two top domains
+   overall). What they are is *recent*: 33 in 2017 rising to 152 in 2024 and 121
+   in 2026. Untagged tracks the collapse of the tagging habit, nothing else.
+
+### Why not prefix topics by group (`ai:llm`, `data:pandas`)
+
+A prefix forces single parenthood, and these tags have two parents - which is
+exactly what produced the 19 mis-seeded ties above. `book` is a type, not an
+area; `raspberrypi` is work at the office and hobby at home. Grouping is better
+kept as a *view* over the tags than as storage: a mapping in this repo can be
+wrong and corrected for free, a rename cannot. Topic is also the facet that
+already works - 89% of use, unambiguous - so it is the worst place to spend a
+migration.

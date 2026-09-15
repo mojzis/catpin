@@ -61,6 +61,12 @@ class Rename:
         return self.old_uses + self.new_uses
 
 
+def default_groups(plan: Plan) -> list[str] | None:
+    """The plan's own preferred groups, from its ``_default`` key."""
+    chosen = plan.get("_default")
+    return [str(g) for g in chosen] if isinstance(chosen, list) else None
+
+
 def groups_of(plan: Plan) -> dict[str, dict[str, str]]:
     """The rename groups, skipping comment keys and any non-mapping entry."""
     return {

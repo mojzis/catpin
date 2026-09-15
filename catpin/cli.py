@@ -11,8 +11,9 @@ import typer
 
 from . import config
 from .analysis import Stats, toread_backlog
+from .clean import clean_pins
 from .client import ALL_INTERVAL_S, PinboardClient, token_username
-from .renames import Rename, plan_renames
+from .renames import Rename, default_groups, plan_renames, select
 from .report import merge_curated, render, stats_payload
 from .state import load_state, read_json, save_state, write_json
 
@@ -70,7 +71,8 @@ def archive(
 @app.command()
 def analyse() -> None:
     """Rebuild data/analysis.md and data/stats.json from the cache."""
-    pins = read_json(config.PINS_RAW)
+    source = config.PINS_CLEAN if config.PINS_CLEAN.exists() else config.PINS_RAW
+    pins = read_json(source)
     now = datetime.now(UTC)
     stats = Stats(pins=pins, now=now)
     backlog = toread_backlog(pins, now)
@@ -81,6 +83,7 @@ def analyse() -> None:
     config.ANALYSIS_MD.write_text(merge_curated(document, existing))
     write_json(config.STATS_JSON, stats_payload(stats, backlog))
 
+    typer.echo(f"source {source}")
     typer.echo(f"{config.ANALYSIS_MD} {stats.total} pins, {len(stats.counts)} tags")
     typer.echo(f"{config.STATS_JSON} written")
 
@@ -142,3 +145,39 @@ def rename(
     save_state(
         config.STATE_JSON, renamed_at=datetime.now(UTC).isoformat(timespec="seconds")
     )
+
+
+@app.command()
+def clean(
+    group: Annotated[
+        list[str] | None,
+        typer.Option("--group", "-g", help="Groups from renames.json to apply."),
+    ] = None,
+    revert: Annotated[
+        bool, typer.Option("--revert", help="Delete the cleaned copy and stop.")
+    ] = False,
+) -> None:
+    """Apply renames.json to a local copy of the archive. Pinboard is untouched."""
+    if revert:
+        config.PINS_CLEAN.unlink(missing_ok=True)
+        typer.echo(f"removed {config.PINS_CLEAN}; analyse falls back to the raw cache")
+        raise typer.Exit(0)
+
+    plan = read_json(RENAMES_JSON)
+    chosen = list(group) if group else default_groups(plan)
+    mapping = select(plan, chosen)
+    result = clean_pins(read_json(config.PINS_RAW), mapping)
+
+    for fold, pins_touched in result.applied.most_common():
+        typer.echo(f"  {fold:38s} {pins_touched} pins")
+
+    dead = sorted(set(mapping) - {f.split(" -> ")[0] for f in result.applied})
+    for fold in dead:
+        typer.echo(f"  {fold:38s} 0 pins - not in this archive")
+
+    write_json(config.PINS_CLEAN, result.pins)
+    typer.echo(
+        f"{config.PINS_CLEAN} {result.tags_before} -> {result.tags_after} tags, "
+        f"{result.pins_changed} pin edits, {result.collapsed} duplicates collapsed"
+    )
+    typer.echo(f"groups: {', '.join(chosen or [])}; raw cache untouched")

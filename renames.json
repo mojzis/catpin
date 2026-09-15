@@ -1,13 +1,23 @@
 {
-  "_comment": "Tag merges for 'pins.py rename'. Each group can be applied on its own. Nothing runs without --yes.",
-  "safe": {
+  "_comment": "Tag merges. 'clean' applies these to a local copy; 'rename' sends them to Pinboard and needs --yes. The 'case' group is local-only in practice: Pinboard's tag index already folds case (tags/get reports security=22, i.e. 21 'security' + 1 'Security'), so tags/rename has nothing to do there - but posts/all returns the stored per-pin case, so local analysis double-counts without it.",
+  "_default": [
+    "case",
+    "safe",
+    "separator",
+    "semantic",
+    "language"
+  ],
+  "case": {
     "Security": "security",
     "Linux": "linux",
-    "Dwh": "dwh",
-    "Cms": "cms",
     "API": "api",
+    "Cms": "cms",
+    "Dwh": "dwh",
     "Ansible": "ansible",
     "Twitter": "twitter",
+    "Recommendation": "recommendations"
+  },
+  "safe": {
     "charts": "chart",
     "games": "game",
     "presentations": "presentation",
@@ -16,9 +26,9 @@
     "agents": "agent",
     "vectors": "vector",
     "skills": "skill",
-    "Recommendation": "recommendations",
     "corse": "course",
-    "tools": "tool"
+    "tools": "tool",
+    "nodes": "notes"
   },
   "separator": {
     "open-source": "opensource",
