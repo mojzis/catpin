@@ -11,6 +11,7 @@ import typer
 
 from . import config
 from .analysis import Stats, pin_tags, tag_span, toread_backlog
+from .areas import classify, load_seeds
 from .clean import clean_pins
 from .client import ALL_INTERVAL_S, PinboardClient, token_username
 from .renames import Rename, default_groups, plan_renames, select
@@ -18,6 +19,7 @@ from .report import merge_curated, render, stats_payload
 from .state import load_state, read_json, save_state, write_json
 
 RENAMES_JSON = Path("renames.json")
+AREAS_JSON = Path("areas.json")
 
 #: A tag whose pins all land inside this many days looks like a burst.
 BURST_DAYS = 60
@@ -208,3 +210,56 @@ def show(
         typer.echo(f"  {str(pin.get('time', ''))[:10]}  [{pin.get('tags', '')}]")
         typer.echo(f"    {str(pin.get('description', ''))[:72]}")
         typer.echo(f"    {str(pin.get('href', ''))[:72]}")
+
+
+def _source() -> Path:
+    """The cleaned archive when one exists, otherwise the raw cache."""
+    return config.PINS_CLEAN if config.PINS_CLEAN.exists() else config.PINS_RAW
+
+
+@app.command()
+def area(
+    show_ambiguous: Annotated[
+        bool, typer.Option("--ambiguous", help="List the undecidable pins.")
+    ] = False,
+) -> None:
+    """Guess each pin's area of life from areas.json. Read-only."""
+    seeds, neutral = load_seeds(read_json(AREAS_JSON))
+    result = classify(read_json(_source()), seeds, neutral)
+
+    for label, count in result.counts.most_common():
+        typer.echo(f"  {label:16s} {count:5d}  {result.share(label):5.1f}%")
+    typer.echo(f"{result.total} pins, {len(seeds)} areas, {len(neutral)} neutral tags")
+
+    if show_ambiguous:
+        for pin in result.ambiguous:
+            typer.echo(
+                f"  [{pin.get('tags', '')}] {str(pin.get('description', ''))[:60]}"
+            )
+
+
+@app.command()
+def burst(
+    days: Annotated[
+        int, typer.Option("--days", help="Longest span still counted as a burst.")
+    ] = BURST_DAYS,
+    min_pins: Annotated[int, typer.Option("--min-pins", help="Ignore rarer tags.")] = 2,
+) -> None:
+    """List tags whose pins all land within a few days - hunts and binges."""
+    pins = read_json(_source())
+    seen: dict[str, list[str]] = {}
+    for pin in pins:
+        for tag in pin_tags(pin):
+            seen.setdefault(tag, []).append(str(pin.get("time", "")))
+
+    rows = []
+    for tag, times in seen.items():
+        if len(times) < min_pins:
+            continue
+        span, first, last = tag_span(pins, tag)
+        if span <= days:
+            rows.append((span, -len(times), tag, len(times), first, last))
+
+    for span, _, tag, count, first, last in sorted(rows):
+        typer.echo(f"  {tag:20s} {count:3d} pins  {span:4d}d  {first}..{last}")
+    typer.echo(f"{len(rows)} burst tags of {len(seen)} ({days}d, {min_pins}+ pins)")
