@@ -11,6 +11,7 @@ from catpin.analysis import (
     pin_domain,
     pin_tags,
     quiet_runs,
+    tag_span,
     tags_per_year,
     toread_backlog,
 )
@@ -87,3 +88,17 @@ def test_toread_backlog_reports_size_and_oldest_age(pins):
     backlog = toread_backlog(pins, NOW)
     assert backlog["count"] == 3
     assert backlog["oldest_age_days"] == 261
+
+
+def test_tag_span_measures_first_to_last_use(pins):
+    days, first, last = tag_span(pins, "python")
+    assert (first, last) == ("2021-01", "2022-06")
+    assert days == 522
+
+
+def test_tag_span_of_a_tag_used_once_is_zero(pins):
+    assert tag_span(pins, "grid") == (0, "2023-02", "2023-02")
+
+
+def test_tag_span_of_an_absent_tag_is_empty(pins):
+    assert tag_span(pins, "nonexistent") == (0, "-", "-")

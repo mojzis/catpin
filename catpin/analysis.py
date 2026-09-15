@@ -207,3 +207,16 @@ class Stats:
     def months(self) -> dict[str, int]:
         """Pins per month across the whole history."""
         return per_month(self.pins)
+
+
+def tag_span(pins: list[Pin], tag: str) -> tuple[int, str, str]:
+    """Days from the first to the last pin carrying ``tag``, and the endpoints.
+
+    A short span on a rarely-used tag is the signature of a burst: a hunt or a
+    binge that invented a tag, used it over an afternoon and never came back.
+    """
+    times = sorted(pin_time(p) for p in pins if tag in pin_tags(p))
+    if not times:
+        return (0, "-", "-")
+    first, last = times[0], times[-1]
+    return ((last - first).days, month_key(first), month_key(last))

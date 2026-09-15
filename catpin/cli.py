@@ -10,7 +10,7 @@ from typing import Annotated
 import typer
 
 from . import config
-from .analysis import Stats, toread_backlog
+from .analysis import Stats, pin_tags, tag_span, toread_backlog
 from .clean import clean_pins
 from .client import ALL_INTERVAL_S, PinboardClient, token_username
 from .renames import Rename, default_groups, plan_renames, select
@@ -18,6 +18,9 @@ from .report import merge_curated, render, stats_payload
 from .state import load_state, read_json, save_state, write_json
 
 RENAMES_JSON = Path("renames.json")
+
+#: A tag whose pins all land inside this many days looks like a burst.
+BURST_DAYS = 60
 
 app = typer.Typer(
     add_completion=False,
@@ -181,3 +184,27 @@ def clean(
         f"{result.pins_changed} pin edits, {result.collapsed} duplicates collapsed"
     )
     typer.echo(f"groups: {', '.join(chosen or [])}; raw cache untouched")
+
+
+@app.command()
+def show(
+    tag: Annotated[str, typer.Argument(help="The tag to inspect.")],
+    limit: Annotated[
+        int, typer.Option("--limit", "-n", help="How many pins to print.")
+    ] = 20,
+) -> None:
+    """Print the pins carrying a tag, to check meaning before folding it."""
+    source = config.PINS_CLEAN if config.PINS_CLEAN.exists() else config.PINS_RAW
+    pins = read_json(source)
+    hits = [p for p in pins if tag in pin_tags(p)]
+    if not hits:
+        typer.echo(f"{tag}: no pins")
+        raise typer.Exit(1)
+
+    days, first, last = tag_span(pins, tag)
+    shape = "burst" if len(hits) > 1 and days <= BURST_DAYS else "spread"
+    typer.echo(f"{tag}: {len(hits)} pins, {first}..{last}, {days}d span, {shape}")
+    for pin in sorted(hits, key=lambda p: str(p.get("time", "")), reverse=True)[:limit]:
+        typer.echo(f"  {str(pin.get('time', ''))[:10]}  [{pin.get('tags', '')}]")
+        typer.echo(f"    {str(pin.get('description', ''))[:72]}")
+        typer.echo(f"    {str(pin.get('href', ''))[:72]}")

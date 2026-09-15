@@ -1,5 +1,5 @@
 {
-  "_comment": "Tag merges. 'clean' applies these to a local copy; 'rename' sends them to Pinboard and needs --yes. The 'case' group is local-only in practice: Pinboard's tag index already folds case (tags/get reports security=22, i.e. 21 'security' + 1 'Security'), so tags/rename has nothing to do there - but posts/all returns the stored per-pin case, so local analysis double-counts without it.",
+  "_comment": "Tag merges. 'clean' applies these to a local copy; 'rename' sends them to Pinboard and needs --yes. The 'case' group is local-only in practice: Pinboard's tag index already folds case (tags/get reports security=22, i.e. 21 'security' + 1 'Security'), so tags/rename has nothing to do there - but posts/all returns the stored per-pin case, so local analysis double-counts without it. Folds are title-checked against the pins before they land here: 'corse' is Corsica not a typo of course, 'nodes' is graph nodes not notes, 'gympl' is a specific school hunt not the school topic.",
   "_default": [
     "case",
     "safe",
@@ -26,9 +26,7 @@
     "agents": "agent",
     "vectors": "vector",
     "skills": "skill",
-    "corse": "course",
-    "tools": "tool",
-    "nodes": "notes"
+    "tools": "tool"
   },
   "separator": {
     "open-source": "opensource",
@@ -48,9 +46,7 @@
     "agentic": "agent"
   },
   "language": {
-    "klima": "climate",
-    "gympl": "school",
-    "cestykrajem": "trip"
+    "klima": "climate"
   },
   "clarity": {
     "lily": "lilypond",

@@ -12,7 +12,7 @@ Generated 2026-09-15 from `data/pins_raw.json`.
 | months spanned | 111 |
 | months with at least one pin | 111 |
 | mean pins / active month | 19.2 |
-| distinct tags | 498 |
+| distinct tags | 502 |
 | distinct domains | 1298 |
 
 Busiest months: 2020-12 (123), 2020-11 (90), 2021-01 (60), 2025-06 (50), 2025-05 (41).
@@ -49,20 +49,20 @@ No gap of two consecutive empty months.
 
 | metric | value |
 |---|---|
-| distinct tags | 498 |
+| distinct tags | 502 |
 | total tag uses | 2019 |
-| share of uses held by the top 40 | 53.5% |
-| tags used exactly once | 283 (56.8%) |
-| tags used exactly twice | 67 (13.5%) |
-| tags used 5 or more times | 87 |
+| share of uses held by the top 40 | 53.2% |
+| tags used exactly once | 285 (56.8%) |
+| tags used exactly twice | 68 (13.5%) |
+| tags used 5 or more times | 85 |
 
 ### Head: top 40 tags
 
 | # | tag | pins | share of all pins |
 |---|---|---|---|
 | 1 | data | 121 | 5.7% |
-| 2 | trip | 85 | 4.0% |
-| 3 | python | 84 | 4.0% |
+| 2 | python | 84 | 4.0% |
+| 3 | trip | 82 | 3.9% |
 | 4 | kids | 71 | 3.3% |
 | 5 | book | 69 | 3.2% |
 | 6 | ai | 44 | 2.1% |
@@ -73,8 +73,8 @@ No gap of two consecutive empty months.
 | 11 | job | 34 | 1.6% |
 | 12 | pandas | 26 | 1.2% |
 | 13 | llm | 24 | 1.1% |
-| 14 | school | 24 | 1.1% |
-| 15 | ml | 23 | 1.1% |
+| 14 | ml | 23 | 1.1% |
+| 15 | school | 22 | 1.0% |
 | 16 | security | 22 | 1.0% |
 | 17 | postgres | 20 | 0.9% |
 | 18 | music | 18 | 0.8% |
@@ -103,11 +103,20 @@ No gap of two consecutive empty months.
 
 ### Long tail
 
-283 tags are used once. First 60 alphabetically: `Ford`, `Lenovo`, `Nvidia`, `OCR`, `OS`, `Productivity`, `SMACK`, `Ubuntu`, `ab`, `aggregations`, `akvarium`, `animals`, `anthropic`, `arrow`, `basecamp`, `basne`, `battleship`, `beach`, `bigdata`, `blender`, `blob`, `brain`, `brainstorm`, `broukbot`, `brucewillis`, `camp`, `cc`, `cdc`, `chat`, `chch`, `chef`, `china`, `chords`, `ci`, `clustering`, `co2`, `coc`, `codegen`, `commerce`, `concussion`, `conservation`, `constellations`, `coop`, `copilot`, `copter`, `covid`, `coworking`, `creativity`, `csat`, `curl`, `cycling`, `d3`, `dagster`, `dask`, `databricks`, `datalake`, `dataquality`, `datastory`, `datawarehouse`, `debugging`.
+285 tags are used once. First 60 alphabetically: `Ford`, `Lenovo`, `Nvidia`, `OCR`, `OS`, `Productivity`, `SMACK`, `Ubuntu`, `ab`, `aggregations`, `akvarium`, `animals`, `anthropic`, `arrow`, `basecamp`, `basne`, `battleship`, `beach`, `bigdata`, `blender`, `blob`, `brain`, `brainstorm`, `broukbot`, `brucewillis`, `camp`, `cc`, `cdc`, `chat`, `chch`, `chef`, `china`, `chords`, `ci`, `clustering`, `co2`, `coc`, `codegen`, `commerce`, `concussion`, `conservation`, `constellations`, `coop`, `copilot`, `copter`, `corse`, `covid`, `coworking`, `creativity`, `csat`, `curl`, `cycling`, `d3`, `dagster`, `dask`, `databricks`, `datalake`, `dataquality`, `datastory`, `datawarehouse`.
 
 ## Near-duplicate tags
 
 No case / separator / plural collisions found.
+
+### Suspected typos
+
+A rare tag one character away from a much more common one.
+
+| suspect | uses | likely meant | uses |
+|---|---|---|---|
+| `nodes` | 1 | `notes` | 4 |
+| `corse` | 1 | `course` | 4 |
 
 ## Tag co-occurrence
 
@@ -116,9 +125,9 @@ For each frequent tag, the tags it shares pins with most often (Jaccard similari
 | tag | travels with (shared pins / jaccard) |
 |---|---|
 | `data` | `visualization` 10/0.065, `python` 10/0.051, `ai` 5/0.031, `reporting` 3/0.024, `pandas` 3/0.021 |
-| `trip` | `nature` 4/0.042, `bird` 3/0.033 |
 | `python` | `testing` 6/0.066, `data` 10/0.051, `jupyter` 3/0.032, `ml` 3/0.029, `performance` 3/0.025 |
-| `kids` | `school` 6/0.067, `game` 4/0.051, `programming` 4/0.051, `history` 3/0.042, `movies` 3/0.041 |
+| `trip` | `nature` 4/0.043, `bird` 3/0.034 |
+| `kids` | `school` 6/0.069, `game` 4/0.051, `programming` 4/0.051, `history` 3/0.042, `movies` 3/0.041 |
 | `book` | `reading` 3/0.042, `kids` 4/0.029 |
 | `ai` | `ml` 3/0.047, `data` 5/0.031 |
 | `visualization` | `chart` 7/0.14, `map` 5/0.104, `data` 10/0.065 |
@@ -127,8 +136,8 @@ For each frequent tag, the tags it shares pins with most often (Jaccard similari
 | `tool` | `image` 3/0.075, `data` 3/0.019 |
 | `pandas` | `data` 3/0.021 |
 | `llm` | `eval` 3/0.12 |
-| `school` | `kids` 6/0.067 |
 | `ml` | `ai` 3/0.047, `python` 3/0.029 |
+| `school` | `kids` 6/0.069 |
 | `postgres` | `performance` 4/0.073 |
 | `chart` | `visualization` 7/0.14 |
 
@@ -216,7 +225,10 @@ For each frequent tag, the tags it shares pins with most often (Jaccard similari
 
 Derived by rule, not judgement - every pair here is a spelling of the same idea. Nothing has been renamed; `tags/rename` runs only after you approve.
 
-None.
+| fold this | uses | into | uses |
+|---|---|---|---|
+| `nodes` | 1 | `notes` | 4 |
+| `corse` | 1 | `course` | 4 |
 
 <!-- CURATED: hand-written below this line; analyse preserves it -->
 
@@ -363,19 +375,27 @@ per-pin case and local analysis would otherwise count two tags where Pinboard
 sees one. `pins.py rename` skips this group automatically - there is nothing on
 the Pinboard side to rename.
 
-### 4b. `safe` - plural and typo (11)
+### 4b. `safe` - plural only (9)
 
 `charts`->`chart`, `games`->`game`, `presentations`->`presentation`,
 `birds`->`bird`, `teams`->`team`, `agents`->`agent`, `vectors`->`vector`,
-`skills`->`skill`, `corse`->`course`, `tools`->`tool`, `nodes`->`notes`.
-
-`nodes`->`notes` was **invisible before the cleanup**: folding `note-taking`
-into `notes` lifted `notes` from 2 uses to 4, which pushed the pair over the
-"rare next to common" threshold. Re-running the analysis after cleaning is what
-surfaced it. A second pass found nothing further, so the plan has converged.
+`skills`->`skill`, `tools`->`tool`.
 
 `tools`->`tool` goes against the counts (20 vs 16), to keep the type facet
 singular like `book` and `song`.
+
+**Two folds were removed after checking the pins behind them**, and both were
+wrong in the same way - a rule-based pass matched a spelling without knowing
+the meaning:
+
+| dropped fold | what the pin actually was |
+|---|---|
+| `corse` -> `course` | Corsica. `rando-patrimoine.corsica`, hiking trails. |
+| `nodes` -> `notes` | graph nodes - tagged `graphviz nodes` on a Vega-Lite graph. |
+
+The lesson is now a command: `pins.py show <tag>` prints the pins carrying a
+tag, with its time span, so a fold can be checked before it is written down.
+No edit-distance fold should enter the plan without it.
 
 ### 4c. `separator` (4)
 
@@ -388,12 +408,18 @@ singular like `book` and `song`.
 `test`->`testing`, `ops`->`devops`, `container`->`docker`, `pi`->`raspberrypi`,
 `assisted`->`vibe`, `agentic`->`agent`.
 
-### 4e. `language` - Czech into English (3)
+### 4e. `language` - Czech into English (1)
 
-`klima`->`climate`, `gympl`->`school`, `cestykrajem`->`trip`.
+`klima`->`climate`. That is the whole group; three folds were dropped.
 
-`sucho` (drought, 3) is deliberately **not** folded into `climate` - it is
-narrower, and folding loses that. `kroužky` (2) is undecided: `kids` or `school`.
+| kept out | why |
+|---|---|
+| `sucho` (3) | drought is narrower than `climate`; folding loses it |
+| `gympl` (2) | not the `school` topic - a two-pin hunt for a specific Prague gymnázium, Dec 2020 |
+| `kroužky` (2) | same shape - ornithology clubs at DDM Praha, Aug 2017 |
+| `cestykrajem` (3) | a personal NGO plan, kept deliberately |
+
+`gympl` and `kroužky` are what led to section 6.
 
 ### 4f. `clarity` - renames, not merges - NOT in the default set
 
@@ -450,3 +476,86 @@ kept as a *view* over the tags than as storage: a mapping in this repo can be
 wrong and corrected for free, a rename cannot. Topic is also the facet that
 already works - 89% of use, unambiguous - so it is the worst place to spend a
 migration.
+
+## 6. Bursts: the third category has a shape, not a vocabulary
+
+Seeding `hunt` from tags found only 3% - because a hunt does not reuse your
+vocabulary. It invents a throwaway tag, uses it twice in one afternoon, and
+never comes back. So look at *timing* instead of words.
+
+Of the 217 tags used more than once, **33 (15%) have every pin inside 60 days**,
+most of them inside a single day:
+
+| tag | pins | span | from | what it was |
+|---|---|---|---|---|
+| `lipno` | 6 | 0d | 2021-10 | booking a cabin |
+| `svata` | 4 | 0d | 2020-12 | Svatopluk Karásek |
+| `tuber` | 4 | 0d | 2020-12 | Czech YouTubers |
+| `koleda` | 4 | 0d | 2020-12 | carol sheet music |
+| `sicily` | 3 | 0d | 2024-03 | trip planning |
+| `cestykrajem` | 3 | 0d | 2020-12 | the NGO plan |
+| `maringotka` | 2 | 0d | 2023-11 | buying a caravan |
+| `gympl` | 2 | 0d | 2020-12 | choosing a high school |
+| `mia` | 2 | 0d | 2019-05 | water tank and pump |
+| `kroužky` | 2 | 0d | 2017-08 | ornithology clubs |
+
+The opposite end is standing interest: `testing` 3261d, `tool` 3091d,
+`trip` 3078d, `book` 2968d, `kids` 2908d - tags that span nearly the whole
+archive.
+
+### Bursts are two different things
+
+The shape is the same; the intent is not.
+
+- **Hunt** - seeking a *decision*: `lipno`, `maringotka`, `mia`, `gympl`,
+  `kroužky`, `sicily`. Practical, one-off, resolved by a purchase or a choice.
+- **Binge** - seeking a *subject*: `underground`, `koleda`, `svata`, `gospel`,
+  `christmas`, `tuber`, `humanity` - **all of them December 2020**, the single
+  busiest month in the archive at 123 pins. One sustained dive into Czech music
+  and culture.
+
+Timing separates bursts from standing interests cleanly. Separating a hunt from
+a binge needs the content, not the clock.
+
+## 7. `data` is a folder name, not a tag
+
+| | `data` | `trip` |
+|---|---|---|
+| pins | 121 | 82 |
+| span | 2019-2025 | 3078 days, the whole archive |
+| sole tag on | **60 pins (50%)** | - |
+| top partner | `visualization`, 10 | `nature`, 4 |
+
+On half its pins, `data` is the only tag - so it carries all the information and
+distinguishes nothing. At 121 pins it covers roughly **18% of the whole work
+domain**. It does not name a topic, it names where you work.
+
+`trip` is the contrast that makes it visible: `trip` maps to an area of life
+*and* stays specific inside it. `data` maps to an area and then *is* the area.
+
+### The fix is not new tags
+
+The sub-vocabulary already exists and is being bypassed: `metadata` 9,
+`reporting` 9, `analytics` 9, `datavault` 8, `dwh` 4, `modelling` 4,
+`validation` 3, `bi` 2. A keyword pass over the 60 sole-`data` pins puts
+**24 of them (40%)** onto a tag already in use:
+
+| would take | pins | that tag today |
+|---|---|---|
+| pipelines | 7 | **0 - does not exist yet** |
+| governance | 5 | 1 |
+| book | 4 | 69 |
+| management | 3 | 8 |
+| analytics | 3 | 9 |
+| modelling | 2 | 4 |
+| no keyword match | 36 | |
+
+Two conclusions, and the second matters for Phase 2:
+
+1. `pipelines` is a genuinely missing tag - 7 pins want it and it does not
+   exist. That is a new tag justified by evidence rather than invented.
+2. **The other 36 cannot be reached from the title.** "Positron",
+   "intake/intake", "Wes McKinney - The Road to Composable Data Systems" are all
+   pipeline and tooling pins that no keyword pass can see. Backfilling `data`
+   will need the page, not just the title - which sizes the Phase 2 fetch budget
+   far above the "only when title is not enough" assumption.
