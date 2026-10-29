@@ -1,4 +1,10 @@
-# Python Template
+# catpin
+
+Analyse a Pinboard archive and tag fresh pins. See `README.md` for the CLI and
+`FINDINGS.md` for what the archive analysis turned up.
+
+Pinboard rules: `posts/all` at most once per 5 minutes, everything else ~1/s.
+Never print `PINBOARD_TOKEN`. Only `pins.py rename --yes` writes to Pinboard.
 
 ## Commands
 
